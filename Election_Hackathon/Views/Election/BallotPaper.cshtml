@@ -1,0 +1,127 @@
+﻿@model List<Election_Hackathon.Models.Candidate_Registration_Form>
+@{
+    ViewBag.Title = "BallotPaper";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using (Html.BeginForm("BallotPaper", "Election", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+
+    <h2>BallotPaper</h2>
+    <h2>List of candidates</h2>
+    <h3>President Election</h3>
+    <table class="table table-bordered table-hover">
+        <tr>
+            <th>Candidate Name</th>
+            <th>Qualification</th>
+            <th>Current Occupation</th>
+            <th>Previous RWA member</th>
+            <th>Part of Govt/Police/NGO</th>
+            <th>Criminal Record</th>
+            <th>Cast Vote</th>
+        </tr>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>@item.Candidate_Name</td>
+            <td>@item.Eduction_Qualification</td>
+            <td> @item.Current_Occupation </td>
+            <td>@item.Part_Of_GovtorPoliceorNGO </td>
+            <td> @item.Previous_RWA_Member</td>
+            <td> @item.Criminal_Record </td>
+            <td> @Html.ActionLink("Vote", "BallotPaper", "Election", new { id = item.Id },new { @class="btn btn-primary"})</td>
+            @*<td>@Html.RadioButton("button", new { id = item.Id })</td>*@
+        </tr>
+        }
+    </table>
+    @*<div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+        
+        </div>
+    </div>*@
+}
+@*<h3>Vice President</h3>
+    <table class="table table-bordered table-hover">
+        <tr>
+            <th>Candidate Name</th>
+            <th>Qualification</th>
+            <th>Current Occupation</th>
+            <th>Previous RWA member</th>
+            <th>Part of Govt/Police/NGO</th>
+            <th>Criminal Record</th>
+            <th>Cast Vote</th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Candidate_Name</td>
+                <td>@item.Eduction_Qualification</td>
+                <td> @item.Current_Occupation </td>
+                <td>@item.Part_Of_GovtorPoliceorNGO </td>
+                <td> @item.Previous_RWA_Member</td>
+                <td> @item.Criminal_Record </td>
+                <td>@Html.RadioButton("button", new { id = item.Id })</td>
+            </tr>
+        }*@
+</table>
+
+
+
+@*@section scripts
+
+    {
+
+        <script>
+
+
+
+      //$i = 1;
+
+
+
+      //$('input[type=checkbox]').click(function (e) {
+
+      // //add one to $i;
+
+      // i++;
+
+      // alert($i);
+
+      //});
+
+      counter = 0;
+
+      $('input[type=checkbox]').click(function () {
+
+        counter++;
+
+        $('input[type=checkbox]').val(counter);
+
+        alert(counter);
+
+        $('input[type=checkbox]').on('change', function (e) {
+
+          if ($('input[type=checkbox]:checked').length > 6) {
+
+            $(this).prop('checked', false);
+
+            alert("allowed only 6");
+
+          }
+
+        });
+
+      });
+
+      //var counter = 0;
+
+      //$('input[type=checkbox]').click(function () {
+
+      // counter++;
+
+      //});
+
+        </script>*@
+
+
+
+

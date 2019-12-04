@@ -1,0 +1,98 @@
+﻿@model Election_Hackathon.Models.Candidate_Registration_Form
+@{
+                /**/
+
+                ViewBag.Title = "Register";
+                Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Registration Form</h2>
+@using (Html.BeginForm("RegisterNew", "Election", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    @Html.ValidationSummary(true)
+    <div class="form-group">
+        @Html.LabelFor(m => m.General_Details.Register_Id, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.General_Details.Register_Id, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.General_Details.Register_Id)
+        </div>
+    </div>
+     <div class="form-group">
+        @Html.LabelFor(m => m.Candidate_Name, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.Candidate_Name, new { @class = "form-control" })
+           
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Age, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.Age, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Age)
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Gender, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            <input type="radio" name="Gender" value="male"> Male<br>
+            <input type="radio" name="Gender" value="female">Female<br>
+            <input type="radio" name="Gender" value="others">Others<br>
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Eduction_Qualification, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.Eduction_Qualification, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Eduction_Qualification)
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Current_Occupation, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.Current_Occupation, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Current_Occupation)
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Part_Of_GovtorPoliceorNGO, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            <input type="radio" name="Part_Of_GovtorPoliceorNGO" value="yes"> Yes<br>
+            <input type="radio" name="Part_Of_GovtorPoliceorNGO" value="no"> No<br>
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Previous_RWA_Member, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+
+            <input type="radio" name="Previous_RWA_Member" value="yes"> Yes<br>
+            <input type="radio" name="Previous_RWA_Member" value="no"> No<br>
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Criminal_Record, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+
+            <input type="radio" name="Criminal_Record" value="yes"> Yes<br>
+            <input type="radio" name="Criminal_Record" value="no"> No<br>
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Post_Name, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            <input type="checkbox" name="Post_Name" value="President"> President<br>
+            <input type="checkbox" name="Post_Name" value="VicePresident" checked>VicePresident<br>
+            <input type="checkbox" name="Post_Name" value="Secretary"> Secretary<br>
+            <input type="checkbox" name="Post_Name" value="Treasurer" checked> Treasurer<br>
+            <input type="checkbox" name="Post_Name" value="General Body"> General Body<br>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" class="btn btn-default" value="Register" />
+        </div>
+    </div>
+
+}
+
+

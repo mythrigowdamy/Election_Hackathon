@@ -1,0 +1,164 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Hackathon_KarnatakaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Candidate_Registration_Form">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Eduction_Qualification" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Current_Occupation" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Previous_RWA_Member" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Part_Of_GovtorPoliceorNGO" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Criminal_Record" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="GeneralDetailsId" Type="int" Nullable="false" />
+          <Property Name="General_Details_Id" Type="int" />
+          <Property Name="Age" Type="int" Nullable="false" />
+          <Property Name="Gender" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Post_Name" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="General_Details">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
+          <Property Name="Register_Id" Type="nvarchar(max)" />
+          <Property Name="UserName" Type="nvarchar(max)" />
+          <Property Name="Password" Type="nvarchar(max)" />
+        </EntityType>
+        <Association Name="FK_dbo_Candidate_Registration_Form_dbo_General_Details_General_Details_Id">
+          <End Role="General_Details" Type="Self.General_Details" Multiplicity="0..1" />
+          <End Role="Candidate_Registration_Form" Type="Self.Candidate_Registration_Form" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="General_Details">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Candidate_Registration_Form">
+              <PropertyRef Name="General_Details_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Hackathon_KarnatakaModelStoreContainer">
+          <EntitySet Name="Candidate_Registration_Form" EntityType="Self.Candidate_Registration_Form" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="General_Details" EntityType="Self.General_Details" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_dbo_Candidate_Registration_Form_dbo_General_Details_General_Details_Id" Association="Self.FK_dbo_Candidate_Registration_Form_dbo_General_Details_General_Details_Id">
+            <End Role="General_Details" EntitySet="General_Details" />
+            <End Role="Candidate_Registration_Form" EntitySet="Candidate_Registration_Form" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Hackathon_KarnatakaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Candidate_Registration_Form">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Eduction_Qualification" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Current_Occupation" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Previous_RWA_Member" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Part_Of_GovtorPoliceorNGO" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Criminal_Record" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="GeneralDetailsId" Type="Int32" Nullable="false" />
+          <Property Name="General_Details_Id" Type="Int32" />
+          <Property Name="Age" Type="Int32" Nullable="false" />
+          <Property Name="Gender" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Post_Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="General_Details" Relationship="Self.FK_dbo_Candidate_Registration_Form_dbo_General_Details_General_Details_Id" FromRole="Candidate_Registration_Form" ToRole="General_Details" />
+        </EntityType>
+        <EntityType Name="General_Details">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Register_Id" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="UserName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Candidate_Registration_Form" Relationship="Self.FK_dbo_Candidate_Registration_Form_dbo_General_Details_General_Details_Id" FromRole="General_Details" ToRole="Candidate_Registration_Form" />
+        </EntityType>
+        <Association Name="FK_dbo_Candidate_Registration_Form_dbo_General_Details_General_Details_Id">
+          <End Role="General_Details" Type="Self.General_Details" Multiplicity="0..1" />
+          <End Role="Candidate_Registration_Form" Type="Self.Candidate_Registration_Form" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="General_Details">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Candidate_Registration_Form">
+              <PropertyRef Name="General_Details_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Hackathon_KarnatakaEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Candidate_Registration_Form" EntityType="Self.Candidate_Registration_Form" />
+          <EntitySet Name="General_Details" EntityType="Self.General_Details" />
+          <AssociationSet Name="FK_dbo_Candidate_Registration_Form_dbo_General_Details_General_Details_Id" Association="Self.FK_dbo_Candidate_Registration_Form_dbo_General_Details_General_Details_Id">
+            <End Role="General_Details" EntitySet="General_Details" />
+            <End Role="Candidate_Registration_Form" EntitySet="Candidate_Registration_Form" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Hackathon_KarnatakaModelStoreContainer" CdmEntityContainer="Hackathon_KarnatakaEntities">
+          <EntitySetMapping Name="Candidate_Registration_Form">
+            <EntityTypeMapping TypeName="Hackathon_KarnatakaModel.Candidate_Registration_Form">
+              <MappingFragment StoreEntitySet="Candidate_Registration_Form">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Eduction_Qualification" ColumnName="Eduction_Qualification" />
+                <ScalarProperty Name="Current_Occupation" ColumnName="Current_Occupation" />
+                <ScalarProperty Name="Previous_RWA_Member" ColumnName="Previous_RWA_Member" />
+                <ScalarProperty Name="Part_Of_GovtorPoliceorNGO" ColumnName="Part_Of_GovtorPoliceorNGO" />
+                <ScalarProperty Name="Criminal_Record" ColumnName="Criminal_Record" />
+                <ScalarProperty Name="GeneralDetailsId" ColumnName="GeneralDetailsId" />
+                <ScalarProperty Name="General_Details_Id" ColumnName="General_Details_Id" />
+                <ScalarProperty Name="Age" ColumnName="Age" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Post_Name" ColumnName="Post_Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="General_Details">
+            <EntityTypeMapping TypeName="Hackathon_KarnatakaModel.General_Details">
+              <MappingFragment StoreEntitySet="General_Details">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Register_Id" ColumnName="Register_Id" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
